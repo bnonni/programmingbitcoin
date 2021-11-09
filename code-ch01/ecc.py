@@ -24,7 +24,11 @@ class FieldElement:
     def __ne__(self, other):
         # this should be the inverse of the == operator
         if other is None:
+<<<<<<< Updated upstream
           return False
+=======
+            return False
+>>>>>>> Stashed changes
         return self.num != other.num or self.prime != other.prime
 
     # tag::source2[]
