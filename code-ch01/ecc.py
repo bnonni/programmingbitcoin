@@ -18,18 +18,16 @@ class FieldElement:
     def __eq__(self, other):
         if other is None:
             return False
-        return self.num == other.num and self.prime == other.prime  # <3>
+        # return self.num == other.num and self.prime == other.prime  # <3>
+        return (self == other)
     # end::source1[]
 
     def __ne__(self, other):
         # this should be the inverse of the == operator
         if other is None:
-<<<<<<< Updated upstream
-          return False
-=======
             return False
->>>>>>> Stashed changes
-        return self.num != other.num or self.prime != other.prime
+        # return self.num != other.num or self.prime != other.prime
+        return not (self == other)
 
     # tag::source2[]
     def __add__(self, other):
@@ -73,7 +71,9 @@ class FieldElement:
         # this means:
         # 1/n == pow(n, p-2, p)
         # We return an element of the same class
-        raise NotImplementedError
+        num = self.num * pow(other.num, other.prime-2, self.prime) % self.prime
+        return self.__class__(num, self.prime)
+        
 
 
 class FieldElementTest(TestCase):
