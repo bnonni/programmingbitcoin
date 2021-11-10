@@ -18,8 +18,8 @@ class FieldElement:
     def __eq__(self, other):
         if other is None:
             return False
-        # return self.num == other.num and self.prime == other.prime  # <3>
-        return (self == other)
+        return self.num == other.num and self.prime == other.prime  # <3>
+        # return (self == other)
     # end::source1[]
 
     def __ne__(self, other):
@@ -71,7 +71,7 @@ class FieldElement:
         # this means:
         # 1/n == pow(n, p-2, p)
         # We return an element of the same class
-        num = self.num * pow(other.num, other.prime-2, self.prime) % self.prime
+        num = self.num * pow(other.num, self.prime - 2, self.prime) % self.prime
         return self.__class__(num, self.prime)
         
 
