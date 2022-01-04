@@ -148,10 +148,10 @@ class Tx:
         # use TxIn.value() to sum up the input amounts
         input_sum, output_sum = 0, 0
         for tx_in in self.tx_ins:
-          input_sum += tx_in.value(testnet=testnet)
+            input_sum += tx_in.value(testnet=testnet)
         # use TxOut.amount to sum up the output amounts
         for tx_out in self.tx_outs:
-          output_sum += tx_out.amount
+            output_sum += tx_out.amount
         # fee is input sum - output sum
         return input_sum - output_sum
 
