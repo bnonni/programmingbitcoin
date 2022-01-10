@@ -145,14 +145,18 @@ class Tx:
     def fee(self, testnet=False):
         '''Returns the fee of this transaction in satoshi'''
         # initialize input sum and output sum
-        # use TxIn.value() to sum up the input amounts
         input_sum, output_sum = 0, 0
+        # use TxIn.value() to sum up the input amounts
+        # get the tx inputs from the Tx class object: self.tx_ins
         for tx_in in self.tx_ins:
-            input_sum += tx_in.value(testnet=testnet)
-        # use TxOut.amount to sum up the output amounts
+          # sum each tx input's value using the .value() method in the TxIn class
+          input_sum += tx_in.value(testnet=testnet)
+        # get the tx outputs from the Tx class object: self.tx_outs
         for tx_out in self.tx_outs:
-            output_sum += tx_out.amount
-        # fee is input sum - output sum
+        # sum each tx output using the amount variable in the TxOut class
+          output_sum += tx_out.amount
+        # calculate fee simply by subtracting outputs from inputs
+        # inputs are required to be >= outputs per Bitcoin consensus rules
         return input_sum - output_sum
 
 
