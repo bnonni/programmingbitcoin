@@ -644,6 +644,7 @@ def op_checksig(stack, z):
     raise NotImplementedError
 
 
+
 def op_checksigverify(stack, z):
     return op_checksig(stack, z) and op_verify(stack)
 
